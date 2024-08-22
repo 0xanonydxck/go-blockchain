@@ -19,7 +19,7 @@ type Header struct {
 }
 
 type Block struct {
-	Header
+	*Header
 	Transactions []Transaction
 	Validator    crypto.PublicKey
 	Signature    *crypto.Signature
@@ -30,7 +30,7 @@ type Block struct {
 
 func NewBlock(h *Header, txs []Transaction) *Block {
 	return &Block{
-		Header:       *h,
+		Header:       h,
 		Transactions: txs,
 	}
 }
